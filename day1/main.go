@@ -15,13 +15,9 @@ func partOne() {
 	scanner := bufio.NewScanner(os.Stdin)
 	for scanner.Scan() {
 		text := scanner.Text()
-		if len(text) == 0 {
-			break
-		}
-
 		num, err := strconv.Atoi(text)
 		if err != nil {
-			panic(err)
+			fmt.Fprintln(os.Stderr, err)
 		}
 		if num > prev {
 			count++
@@ -29,7 +25,7 @@ func partOne() {
 		prev = num
 	}
 	if err := scanner.Err(); err != nil {
-		panic(err)
+		fmt.Fprintln(os.Stderr, err)
 	}
 	fmt.Println(count)
 }
@@ -41,13 +37,9 @@ func partTwo() {
 	scanner := bufio.NewScanner(os.Stdin)
 	for scanner.Scan() {
 		text := scanner.Text()
-		if len(text) == 0 {
-			break
-		}
-
 		num, err := strconv.Atoi(text)
 		if err != nil {
-			panic(err)
+			fmt.Fprintln(os.Stderr, err)
 		}
 		if num > i {
 			count++
@@ -55,7 +47,7 @@ func partTwo() {
 		i, j, k = j, k, num
 	}
 	if err := scanner.Err(); err != nil {
-		panic(err)
+		fmt.Fprintln(os.Stderr, err)
 	}
 	fmt.Println(count)
 }
